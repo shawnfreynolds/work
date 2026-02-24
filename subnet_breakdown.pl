@@ -648,7 +648,7 @@ rawData.forEach(r => {
   if (r.type === 'open' || r.type === 'error') {
     const cls = r.type === 'error' ? 'error-label' : 'open-label';
     tr.innerHTML =
-      '<td class="td-network ' + cls + '">' + esc(r.net) + ' &mdash; ' + esc(r.end) + '</td>' +
+      '<td class="td-network ' + cls + '">' + esc(r.net) + ' — ' + esc(r.end) + '</td>' +
       '<td class="' + cls + '">' + esc(r.subnet) + '</td>' +
       '<td></td><td></td><td></td><td></td>' +
       '<td class="td-comment">' + esc(r.comment) + '</td>' +
