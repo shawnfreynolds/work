@@ -142,11 +142,10 @@ foreach my $entry (@data) {
     my $site   = (defined $dparts[2]) ? $dparts[2] : "";
     my $vlan   = (defined $dparts[7]) ? $dparts[7] : "";
 
-    # Comment = everything from index 10 onward, joined by '-', underscores become spaces
+    # Comment = everything from index 10 onward, joined by '-', keep underscores as-is
     my $comment = "";
     if (scalar @dparts > 10) {
         $comment = join("-", @dparts[10..$#dparts]);
-        $comment =~ s/_/ /g;
     }
 
     $site_set{uc($site)} = 1 if $site;
@@ -653,13 +652,11 @@ rawData.forEach(r => {
       '<td class="td-comment">' + esc(r.comment) + '</td>' +
       '<td class="td-range">' + esc(r.range) + '</td>';
   } else {
-    const siteTag = r.site ? '<span class="tag-site site-' + r.site + '">' + r.site + '</span>' : '';
-    const vlanTag = r.vlan ? '<span class="tag-vlan">VLAN&nbsp;' + r.vlan + '</span>' : '';
     tr.innerHTML =
-      '<td class="td-network">' + esc(r.net) + ' &mdash; ' + esc(r.end) + '</td>' +
+      '<td class="td-network">' + esc(r.net) + ' \u2014 ' + esc(r.end) + '</td>' +
       '<td class="td-subnet">' + esc(r.subnet) + '</td>' +
       '<td class="td-gateway">' + esc(r.gw) + '</td>' +
-      '<td class="td-desc">' + siteTag + vlanTag + esc(r.desc) + '</td>' +
+      '<td class="td-desc">' + esc(r.desc) + '</td>' +
       '<td class="td-usable">' + r.usable + '</td>' +
       '<td class="td-comment">' + esc(r.comment) + '</td>' +
       '<td class="td-range">' + esc(r.range) + '</td>';
