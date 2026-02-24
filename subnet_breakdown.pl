@@ -481,6 +481,7 @@ print <<HTML;
   .td-network { color: #003d7a; font-weight: 500; }
   .td-subnet  { color: var(--text-dim); }
   .td-gateway { color: #005533; }
+  .td-vlan    { color: #0044aa; font-weight: 500; text-align: center; }
   .td-desc    { color: var(--text); max-width: 500px; overflow: hidden; text-overflow: ellipsis; }
   .td-usable  { text-align: right; color: var(--accent); font-weight: 600; }
   .td-comment { color: #444; font-style: italic; max-width: 220px; overflow: hidden; text-overflow: ellipsis; }
@@ -594,10 +595,11 @@ print <<HTML;
         <th onclick="sortTable(0)">Network Range</th>
         <th onclick="sortTable(1)">Subnet Mask</th>
         <th onclick="sortTable(2)">Gateway</th>
-        <th onclick="sortTable(3)">Description (DNS)</th>
-        <th onclick="sortTable(4)">Usable</th>
-        <th onclick="sortTable(5)">Comment</th>
-        <th onclick="sortTable(6)">Range</th>
+        <th onclick="sortTable(3)">VLAN #</th>
+        <th onclick="sortTable(4)">Description (DNS)</th>
+        <th onclick="sortTable(5)">Usable</th>
+        <th onclick="sortTable(6)">Comment</th>
+        <th style="display:none">Range</th>
       </tr>
     </thead>
     <tbody id="tbody"></tbody>
@@ -648,18 +650,19 @@ rawData.forEach(r => {
     tr.innerHTML =
       '<td class="td-network ' + cls + '">' + esc(r.net) + ' &mdash; ' + esc(r.end) + '</td>' +
       '<td class="' + cls + '">' + esc(r.subnet) + '</td>' +
-      '<td></td><td></td><td></td>' +
+      '<td></td><td></td><td></td><td></td>' +
       '<td class="td-comment">' + esc(r.comment) + '</td>' +
-      '<td class="td-range">' + esc(r.range) + '</td>';
+      '<td style="display:none">' + esc(r.range) + '</td>';
   } else {
     tr.innerHTML =
       '<td class="td-network">' + esc(r.net) + ' \u2014 ' + esc(r.end) + '</td>' +
       '<td class="td-subnet">' + esc(r.subnet) + '</td>' +
       '<td class="td-gateway">' + esc(r.gw) + '</td>' +
+      '<td class="td-vlan">' + esc(r.vlan) + '</td>' +
       '<td class="td-desc">' + esc(r.desc) + '</td>' +
       '<td class="td-usable">' + r.usable + '</td>' +
       '<td class="td-comment">' + esc(r.comment) + '</td>' +
-      '<td class="td-range">' + esc(r.range) + '</td>';
+      '<td style="display:none">' + esc(r.range) + '</td>';
   }
 
   tbody.appendChild(tr);
