@@ -12,7 +12,7 @@ my $popen  = 1;
 my $perror = 1;
 
 # ============================================================
-# DNS lookup — pull all netn records, all address ranges
+# DNS lookup - pull all netn records, all address ranges
 # ============================================================
 my @dns = `host -l allina.com | grep netn | grep "has address 1"`;
 # Uncomment to test against localhost:
@@ -648,14 +648,14 @@ rawData.forEach(r => {
   if (r.type === 'open' || r.type === 'error') {
     const cls = r.type === 'error' ? 'error-label' : 'open-label';
     tr.innerHTML =
-      '<td class="td-network ' + cls + '">' + esc(r.net) + ' — ' + esc(r.end) + '</td>' +
+      '<td class="td-network ' + cls + '">' + esc(r.net) + ' - ' + esc(r.end) + '</td>' +
       '<td class="' + cls + '">' + esc(r.subnet) + '</td>' +
       '<td></td><td></td><td></td><td></td>' +
       '<td class="td-comment">' + esc(r.comment) + '</td>' +
       '<td style="display:none">' + esc(r.range) + '</td>';
   } else {
     tr.innerHTML =
-      '<td class="td-network">' + esc(r.net) + ' \u2014 ' + esc(r.end) + '</td>' +
+      '<td class="td-network">' + esc(r.net) + ' - ' + esc(r.end) + '</td>' +
       '<td class="td-subnet">' + esc(r.subnet) + '</td>' +
       '<td class="td-gateway">' + esc(r.gw) + '</td>' +
       '<td class="td-vlan">' + esc(r.vlan) + '</td>' +
